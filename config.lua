@@ -15,13 +15,13 @@ Config = {
   Whitelist                = false, -- LEAVE TO FALSE IT'S NOT WORKING
   AllowWhitelistAutoUpdate = false,
   MaxCharacters            = 5, --MAX ALLOWED TO BE CREATED
-  maxHealth                = 4, -- 10 is FULL 0 IS EMPTY define max outer core for players
-  maxStamina               = 4, -- 10 is FULL 0 IS EMPTY define max outer core for players
+  maxHealth                = 2, -- 10 is FULL 0 IS EMPTY define max outer core for players
+  maxStamina               = 2, -- 10 is FULL 0 IS EMPTY define max outer core for players
 
   ------------------------------------------------------------------------------
   ------------------------------ WEBHOOKS --------------------------------------
 
-  Logs         = true, -- SET TO FALSE IF YOU DONT WANT LOGS
+  Logs         = false, -- SET TO FALSE IF YOU DONT WANT LOGS
   webhookColor = 16711680, --EMBED COLOR
   name         = "VORP", --NAME OF EMBED
   logo         = "https://via.placeholder.com/30x30", --HEAD LOGO
