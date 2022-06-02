@@ -15,8 +15,8 @@ Config = {
   Whitelist                = false, -- LEAVE TO FALSE IT'S NOT WORKING
   AllowWhitelistAutoUpdate = false,
   MaxCharacters            = 5, --MAX ALLOWED TO BE CREATED
-  maxHealth                = 2, -- 10 is FULL 0 IS EMPTY define max outer core for players
-  maxStamina               = 2, -- 10 is FULL 0 IS EMPTY define max outer core for players
+  maxHealth                = 1, -- 10 is FULL 0 IS EMPTY define max outer core for players
+  maxStamina               = 1, -- 10 is FULL 0 IS EMPTY define max outer core for players
 
   ------------------------------------------------------------------------------
   ------------------------------ WEBHOOKS --------------------------------------
