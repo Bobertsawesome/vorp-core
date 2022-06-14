@@ -15,16 +15,36 @@ function LoadUser(source, setKickReason, deferrals, identifier, license)
 
     if #resultList > 0 then
         local user = resultList[1]
-        if user["banned"] == 1 then
+        if user["banned"] == true then
             local bannedUntilTime = user["banneduntil"]
             local currentTime = tonumber(os.time(os.date("!*t")))
-            if bannedUntilTime > currentTime then
+
+            if bannedUntilTime == 0 then
+                deferrals.done("You are banned permanently!")
+                setKickReason("You are banned permanently!")
+            elseif bannedUntilTime > currentTime then
                 local bannedUntil = os.date(Config.Langs["DateTimeFormat"], bannedUntilTime+Config.TimeZoneDifference*3600)
                 deferrals.done(Config.Langs["BannedUser"]..bannedUntil..Config.Langs["TimeZone"])
                 setKickReason(Config.Langs["BannedUser"]..bannedUntil..Config.Langs["TimeZone"])
             else
                 TriggerEvent("vorpbans:addtodb", false, IdentifiersToId[identifier], 0)
             end
+        end
+
+        local retvalList = exports.ghmattimysql:executeSync('SELECT * FROM whitelist WHERE identifier = ?', { identifier })
+        if #retvalList == 0 then
+            local discordIdentity = GetIdentity(source, "discord")
+            local discordId = string.sub(discordIdentity, 9)
+            local steamName = GetPlayerName(source)
+            local userid
+            exports.ghmattimysql:executeSync("INSERT INTO whitelist (identifier, status) VALUES (@identifier, @status)", {['@identifier'] = identifier, ['@status']=false})
+            local entryList = exports.ghmattimysql:executeSync('SELECT * FROM whitelist WHERE identifier = ?', { identifier })
+            if #entryList > 0 then
+                local entry = entryList[1]
+                userid = entry["id"]
+            end
+            local message = "**Steam name: **`" .. steamName .. "`**\nIdentifier:** `" .. identifier .. "` \n**Discord:** <@" .. discordId .. ">\n **User-Id:** `" .. userid .."`"
+            TriggerEvent("vorp:newPlayerWebhook", "📋` New player joined server` ", message, color)
         end
 
         _users[identifier] = User(source, identifier, user["group"], user["warnings"], license)
@@ -35,6 +55,20 @@ function LoadUser(source, setKickReason, deferrals, identifier, license)
     else
         --New User
         exports.ghmattimysql:executeSync("INSERT INTO users VALUES(?,'user',0,0,0)", { identifier })
+        local discordIdentity = GetIdentity(source, "discord")
+        local discordId = string.sub(discordIdentity, 9)
+        local steamName = GetPlayerName(source)
+        local userid
+        if Config.Whitelist == false then
+            exports.ghmattimysql:executeSync("INSERT INTO whitelist (identifier, status) VALUES (@identifier, @status)", {['@identifier'] = identifier, ['@status']=false})
+        end
+        local entryList = exports.ghmattimysql:executeSync('SELECT * FROM whitelist WHERE identifier = ?', { identifier })
+        if #entryList > 0 then
+            local entry = entryList[1]
+            userid = entry["id"]
+        end
+        local message = "**Steam name: **`" .. steamName .. "`**\nIdentifier**`" .. identifier .. "` \n**Discord:** <@" .. discordId .. ">\n **User-Id:** `" .. userid .."`"
+        TriggerEvent("vorp:newPlayerWebhook", "📋` New player joined server` ", message, color)
 
         _users[identifier] = User(source, identifier, "user", 0, license)
         deferrals.done()
