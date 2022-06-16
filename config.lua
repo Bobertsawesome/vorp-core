@@ -21,12 +21,12 @@ Config = {
   ------------------------------------------------------------------------------
   ------------------------------ WEBHOOKS --------------------------------------
 
-  Logs         = false, -- SET TO FALSE IF YOU DONT WANT LOGS
+  Logs         = true, -- SET TO FALSE IF YOU DONT WANT LOGS
   webhookColor = 16711680, --EMBED COLOR
   name         = "VORP", --NAME OF EMBED
-  logo         = "https://via.placeholder.com/30x30", --HEAD LOGO
-  footerLogo   = "https://via.placeholder.com/30x30", --FOOTER LOGO
-  Avatar       = "https://via.placeholder.com/30x30", -- AVATAR LOGO
+  logo         = "https://i.ibb.co/FWmNj7L/logo-icon-trans.png", --HEAD LOGO
+  footerLogo   = "https://i.ibb.co/FWmNj7L/logo-icon-trans.png", --FOOTER LOGO
+  Avatar       = "https://i.ibb.co/FWmNj7L/logo-icon-trans.png", -- AVATAR LOGO
 
 
   ---------------------------- WEBHOOK FOR EACH LOG -----------------------------
@@ -177,3 +177,14 @@ Config = {
 
 
 }
+
+AddEventHandler('onResourceStart', function(resourceName)
+  if resourceName == 'urpUtil' then
+	local data = exports.urpUtil:webhookExport('vorp_core')
+	if data then
+		for k,v in pairs(data) do
+			Config[k] = v
+		end
+	end
+  end
+end)
