@@ -57,16 +57,12 @@ Config = {
   ------------------------------------------------------------------------------
   ------------------------- SHOW OR HIDE UI's ----------------------------------
 
-  HideUi            = true, --show or hide the UI includes  gold cash ID and level bar  the cash gold ID are now being displayed in the inventory. you can disable this one if yo u like it more
-  mapTypeOnFoot     = 3, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on foot
-  mapTypeOnMount    = 3, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on horse
-  enableTypeRadar   = false, --- if true the above will work, if false players can choose their radar type in the game settings.
-  Loadinscreen      = true, --ENABLE LOADING SCREENS on spawn and while spawn dead
-  LoadinScreenTimer = 10000, -- miliseconds
   HideUi          = true, --show or hide the UI includes  gold cash ID and level bar  the cash gold ID are now being displayed in the inventory. you can disable this one if yo u like it more
   mapTypeOnFoot   = 1, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on foot
   mapTypeOnMount  = 1, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on horse
   enableTypeRadar = true, --- if true the above will work, if false players can choose their radar type in the game settings.
+  Loadinscreen      = true, --ENABLE LOADING SCREENS on spawn and while spawn dead
+  LoadinScreenTimer = 10000, -- miliseconds
 
   -------------------------------------------------------------------------------
   ------------------------------- RESPAWN ---------------------------------------
@@ -178,14 +174,11 @@ Config = {
     Hold               = "Loading character..",
     Load               = "",
     Almost             = "Underworld Redemption"
-    Hold               = "HOLD ON!!",
-    Load               = "You are loading in",
-    Almost             = "Almost there...",
     Holddead           = "YOU ARE DEAD",
     Loaddead           = "you left the server while dead",
     forcedrespawn      = "YOU WILL BE RESPAWNED",
     forced             = "Because you left the server while dead",
-    sit                = "you need to be steated",
+    sit                = "You need to be seated!",
     NotifyChar         = "Once you ~e~delete ~q~a character theres no going back!"
   },
 
