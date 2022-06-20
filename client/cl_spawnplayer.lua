@@ -129,7 +129,7 @@ RegisterNetEvent('vorp:SelectedCharacter', function()
 end)
 
 AddEventHandler('playerSpawned', function(spawnInfo)
-    Wait(2000)
+    Wait(500)
     Citizen.InvokeNative(0x1E5B70E53DB661E5, 0, 0, 0, Config.Langs.Hold, Config.Langs.Load, Config.Langs.Almost)
     DisplayRadar(false) --hide HUD on player select char
     SetMinimapHideFow(false) -- hide map fog of war
