@@ -173,13 +173,13 @@ Config = {
     cantCarry          = "VORP: Can't carry more weapons!",
     Hold               = "Loading character..",
     Load               = "",
-    Almost             = "Underworld Redemption"
+    Almost             = "Underworld Redemption",
     Holddead           = "YOU ARE DEAD",
     Loaddead           = "you left the server while dead",
     forcedrespawn      = "YOU WILL BE RESPAWNED",
     forced             = "Because you left the server while dead",
     sit                = "You need to be seated!",
-    NotifyChar         = "Once you ~e~delete ~q~a character theres no going back!"
+    NotifyChar         = "Once you ~e~delete ~q~a character theres no going back!",
   },
 
 
