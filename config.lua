@@ -189,7 +189,7 @@ Config = {
     forced             = "Because you left the server while dead",
     sit                = "You need to be seated!",
     NotifyChar         = "Any character height below/above 1.0 WILL cause issues!",
-    NotifyCharSelect   = "Once you ~e~delete ~q~a character theres no going back!"
+    NotifyCharSelect   = "Once you ~e~delete ~q~a character theres no going back!",
     PVPNotifyOn        = "PVP On ",
     PVPNotifyOff       = "PVP Off" 
   },
