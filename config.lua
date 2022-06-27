@@ -14,7 +14,6 @@ Config = {
   initGroup                = "user", -- leave it like this
   Whitelist                = false,
   AllowWhitelistAutoUpdate = false,
-  MaxCharacters            = 5, --MAX ALLOWED TO BE CREATED
   maxHealth                = 1, -- 10 is FULL 0 IS EMPTY define max outer core for players
   maxStamina               = 1, -- 10 is FULL 0 IS EMPTY define max outer core for players
   PVP                      = true, -- Can players attack/hurt one another
@@ -201,7 +200,7 @@ Config = {
     PVPNotifyOff       = "PVP Off",
     AddChar            = "Added Multicharacter ",
     RemoveChar         = "Removed Multicharacter ",
-    WrongHex           = "Hex not in DB or Wrong Hex"
+    WrongHex           = "Hex not in DB or Wrong Hex",
   },
 
 
