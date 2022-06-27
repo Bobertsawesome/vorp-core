@@ -22,6 +22,12 @@ Config = {
   savePlayersTimer         = 10000, -- this will tell the core in how many miliseconds should all players be saved to the database, decreasing may reduce performance
 
   ------------------------------------------------------------------------------
+  --------------------------- MULTICHARACTER -----------------------------------
+  SaveSteamNameDB          = false, -- TRUE if you want save steamname on character DB when player drop (need to update SQL)
+  UseCharPermission        = false, -- TRUE if you want give multicharacter on selected players (need to update SQL) | if you change TRUE to FALSE player logs with first character created
+  MaxCharacters            = 5, --MAX ALLOWED TO BE CREATED [if UseCharPermission = true, SELECTED players(with command) can create MaxCharacters characters / if UseCharPermission = false, players can create MaxCharacters characters]
+
+  ------------------------------------------------------------------------------
   ------------------------------ UI CORES --------------------------------------
   HideOnlyDEADEYE = true,
   HidePlayersCore = false,
@@ -55,6 +61,7 @@ Config = {
   WhitelistWebhook  = "", --WHITELIST
   BanWarnWebhook    = "", --BANS/WARNS
   NewPlayerWebhook  = "", --NEWPLAYER
+  CharPermWebhook   = "", --CHARPERMS
 
   ------------------------------------------------------------------------------
   ---------------------------- VOICE -------------------------------------------
@@ -191,7 +198,10 @@ Config = {
     NotifyChar         = "Any character height below/above 1.0 WILL cause issues!",
     NotifyCharSelect   = "Once you ~e~delete ~q~a character theres no going back!",
     PVPNotifyOn        = "PVP On ",
-    PVPNotifyOff       = "PVP Off" 
+    PVPNotifyOff       = "PVP Off",
+    AddChar            = "Added Multicharacter ",
+    RemoveChar         = "Removed Multicharacter ",
+    WrongHex           = "Hex not in DB or Wrong Hex"
   },
 
 
