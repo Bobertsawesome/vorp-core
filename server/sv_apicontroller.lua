@@ -89,7 +89,7 @@ AddEventHandler('getCore', function(cb)
         --ServerCallBacks[name] = callback
         TriggerEvent("vorp:addNewCallBack", name, callback)
     end
-
+        
     coreData.getUsers = function()
         return _users
     end
