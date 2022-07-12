@@ -5,6 +5,7 @@ local dbversion = nil
 local Tables = {
     {
         name = "whitelist",
+        script = "vorp_core",
         sql = [[
             CREATE TABLE IF NOT EXISTS `whitelist`  (
             `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -18,6 +19,7 @@ local Tables = {
     },
     {
         name = "users",
+        script = "vorp_core",
         sql = [[
             CREATE TABLE IF NOT EXISTS `users` (
             `identifier` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -32,6 +34,7 @@ local Tables = {
     },
     {
         name = "characters",
+        script = "vorp_core",
         sql = [[
             CREATE TABLE IF NOT EXISTS `characters`  (
             `identifier` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
@@ -65,12 +68,14 @@ local Tables = {
 local Updates = {
     {
         name = "banned",
+        script = "vorp_core",
         sql = [[
             ALTER TABLE `users` MODIFY COLUMN  `banned` boolean;
         ]]
     },
     {
         name = "banneduntil",
+        script = "vorp_core",
         find = [[
             select *
             from Information_Schema.Columns
@@ -83,6 +88,7 @@ local Updates = {
     },
     {
         name = "status",
+        script = "vorp_core",
         find = [[
             select *
             from Information_Schema.Columns
@@ -95,6 +101,7 @@ local Updates = {
     },
     {
         name = "firstconnection",
+        script = "vorp_core",
         find = [[
             select *
             from Information_Schema.Columns
@@ -107,6 +114,7 @@ local Updates = {
     },
     {
         name = "steamname",
+        script = "vorp_core",
         find = [[
             select *
             from Information_Schema.Columns
@@ -119,6 +127,7 @@ local Updates = {
     },
     {
         name = "char",
+        script = "vorp_core",
         find = [[
             select *
             from Information_Schema.Columns
@@ -131,6 +140,7 @@ local Updates = {
     },
     {
         name = "ammo",
+        script = "vorp_core",
         find = [[
             select *
             from Information_Schema.Columns
@@ -138,11 +148,12 @@ local Updates = {
             AND  Column_Name = 'ammo';
         ]],
         sql = [[
-            ALTER TABLE `characters` ADD COLUMN `ammo` longtext DEFAULT '{}';
+            ALTER TABLE `characters` ADD COLUMN `ammo` varchar(255) DEFAULT '{}';
         ]]
     },
     {
         name = "ammoindex",
+        script = "vorp_core",
         find = [[
             select *
             from Information_Schema.Columns
@@ -152,8 +163,75 @@ local Updates = {
         sql = [[
             ALTER TABLE `characters` ADD INDEX `ammo` (`ammo`);
         ]]
+    },
+    {
+        name = "healthouter",
+        script = "vorp_core",
+        find = [[
+            select *
+            from Information_Schema.Columns
+            where Table_Name = 'characters'
+            AND  Column_Name = 'healthouter';
+        ]],
+        sql = [[
+            ALTER TABLE `characters` ADD COLUMN `healthouter` int(4) DEFAULT 500 AFTER `xp`;
+        ]]
+    },
+    {
+        name = "healthinner",
+        script = "vorp_core",
+        find = [[
+            select *
+            from Information_Schema.Columns
+            where Table_Name = 'characters'
+            AND  Column_Name = 'healthinner';
+        ]],
+        sql = [[
+            ALTER TABLE `characters` ADD COLUMN `healthinner` int(4) DEFAULT 100 AFTER `healthouter`;
+        ]]
+    },
+    {
+        name = "staminaouter",
+        script = "vorp_core",
+        find = [[
+            select *
+            from Information_Schema.Columns
+            where Table_Name = 'characters'
+            AND  Column_Name = 'staminaouter';
+        ]],
+        sql = [[
+            ALTER TABLE `characters` ADD COLUMN `staminaouter` int(4) DEFAULT 100 AFTER `healthinner`;
+        ]]
+    },
+    {
+        name = "stamininner",
+        script = "vorp_core",
+        find = [[
+            select *
+            from Information_Schema.Columns
+            where Table_Name = 'characters'
+            AND  Column_Name = 'staminainner';
+        ]],
+        sql = [[
+            ALTER TABLE `characters` ADD COLUMN `staminainner` int(4) DEFAULT 100 AFTER `staminaouter`;
+        ]]
     }
 }
+
+dbupdaterAPI = {
+}
+
+dbupdaterAPI.addTables = function (tbls)
+    for _, tbl in ipairs(tbls) do 
+        table.insert(Tables, tbl)
+    end
+end
+
+dbupdaterAPI.addUpdates = function (updts)
+    for _, updt in ipairs(updts) do 
+        table.insert(Updates, updt)
+    end
+end
 
 local function runSQLList(list, type)
     for index, it in ipairs(list) do
@@ -162,7 +240,7 @@ local function runSQLList(list, type)
             local isfound = exports.ghmattimysql:executeSync(it.find)
             if #isfound > 0 then
                 hascolumn = true
-                print('^4Database Updater ^3('..GetCurrentResourceName()..')^2✅ Column Exists: ' .. it.name .. ' ^0')
+                print('^4Database Auto Updater ^3('..it.script..')^2✅ Column Exists: ' .. it.name .. ' ^0')
             end
         end
 
@@ -178,7 +256,7 @@ local function runSQLList(list, type)
                 else 
                     out = '^1❌ ('..dbversion..') Failed to Updated: '
                 end
-                print('^4Database Updater ^3('..GetCurrentResourceName()..')' .. out .. it.name .. ' ^0')
+                print('^4Database Auto Updater ^3('..it.script..')' .. out .. it.name .. ' ^0')
             else
                 local out = ''
                 if type == 'table' then
@@ -187,7 +265,7 @@ local function runSQLList(list, type)
                 else 
                     out = 'Updated Column: '
                 end
-                print('^4Database Updater ^3('..GetCurrentResourceName()..')^2✅ ' .. out .. it.name .. '^0')
+                print('^4Database Auto Updater ^3('..it.script..')^2✅ ' .. out .. it.name .. '^0')
             end 
         end
     end
@@ -236,7 +314,7 @@ Citizen.CreateThread(function()
     if updated then
         SaveResourceFile(GetCurrentResourceName(), "./server/services/dbupdater/status.json", json.encode(status))
     else
-        print('^4Database Updater ^3('..GetCurrentResourceName()..')^2✅ Database('..dbversion..') is up to date^0')
+        print('^4Database Auto Updater ^3('..dbversion..')^2✅ Database is up to date^0')
     end
 
     print('^0###############################################################################')
