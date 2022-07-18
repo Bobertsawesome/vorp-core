@@ -27,15 +27,9 @@ Config = {
 
   ------------------------------------------------------------------------------
   --------------------------- MULTICHARACTER -----------------------------------
-<<<<<<< HEAD
   SaveSteamNameDB          = true, -- TRUE if you want save steamname on character DB when player drop (need to update SQL)
   UseCharPermission        = false, -- TRUE if you want give multicharacter on selected players (need to update SQL) | if you change TRUE to FALSE player logs with first character created
   MaxCharacters            = 5, --MAX ALLOWED TO BE CREATED [if UseCharPermission = true, SELECTED players(with command) can create MaxCharacters characters / if UseCharPermission = false, players can create MaxCharacters characters]
-=======
-  SaveSteamNameDB   = false, -- TRUE if you want save steamname on character DB when player drop (need to update SQL)
-  UseCharPermission = false, -- TRUE if you want give multicharacter on selected players (need to update SQL) | if you change TRUE to FALSE player logs with first character created
-  MaxCharacters     = 5, --MAX ALLOWED TO BE CREATED [if UseCharPermission = true, SELECTED players(with command) can create MaxCharacters characters / if UseCharPermission = false, players can create MaxCharacters characters]
->>>>>>> e4e87c925da4fb7c5345578704aed95765930c12
 
   ------------------------------------------------------------------------------
   ------------------------------ UI CORES --------------------------------------
