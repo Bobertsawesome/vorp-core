@@ -5,7 +5,7 @@
 Config = {
   ----------------------------------------------------------------------------
   ----------------------- SERVER MANAGEMENT -------------------------------------
-  autoUpdateDB             = true,
+  autoUpdateDB = true,
 
   ----------------------------------------------------------------------------
   ----------------------- STARTING POINT -------------------------------------
@@ -23,23 +23,30 @@ Config = {
   PVP                      = true, -- Can players attack/hurt one another
   PVPToggle                = true, -- If true, players can set their own pvp state
   savePlayersTimer         = 10000, -- this will tell the core in how many miliseconds should all players be saved to the database, decreasing may reduce performance
+  showplayerIDwhenfocus    = true, -- set false will show steam name when focus on another player RMB
 
   ------------------------------------------------------------------------------
   --------------------------- MULTICHARACTER -----------------------------------
+<<<<<<< HEAD
   SaveSteamNameDB          = true, -- TRUE if you want save steamname on character DB when player drop (need to update SQL)
   UseCharPermission        = false, -- TRUE if you want give multicharacter on selected players (need to update SQL) | if you change TRUE to FALSE player logs with first character created
   MaxCharacters            = 5, --MAX ALLOWED TO BE CREATED [if UseCharPermission = true, SELECTED players(with command) can create MaxCharacters characters / if UseCharPermission = false, players can create MaxCharacters characters]
+=======
+  SaveSteamNameDB   = false, -- TRUE if you want save steamname on character DB when player drop (need to update SQL)
+  UseCharPermission = false, -- TRUE if you want give multicharacter on selected players (need to update SQL) | if you change TRUE to FALSE player logs with first character created
+  MaxCharacters     = 5, --MAX ALLOWED TO BE CREATED [if UseCharPermission = true, SELECTED players(with command) can create MaxCharacters characters / if UseCharPermission = false, players can create MaxCharacters characters]
+>>>>>>> e4e87c925da4fb7c5345578704aed95765930c12
 
   ------------------------------------------------------------------------------
   ------------------------------ UI CORES --------------------------------------
   HideOnlyDEADEYE = true,
   HidePlayersCore = false,
   HideHorseCores = false,
-  
+
   ------------------------------------------------------------------------------
   ------------------------------ WEBHOOKS --------------------------------------
 
-  Logs         = true, -- SET TO FALSE IF YOU DONT WANT LOGS
+
   webhookColor = 16711680, --EMBED COLOR
   name         = "VORP", --NAME OF EMBED
   logo         = "https://i.ibb.co/FWmNj7L/logo-icon-trans.png", --HEAD LOGO
@@ -49,22 +56,24 @@ Config = {
 
   ---------------------------- WEBHOOK FOR EACH LOG -----------------------------
   --CHANGE THE LINKS
-
-  SetgroupWebhook   = "", --SETJOB
-  SetjobWebhook     = "", --SETGROUP
-  AddmoneyWebhook   = "", --ADDMONEY
-  DelMoneyWebhook   = "", --DELMONEY
-  AddItemsWebhook   = "", --ADDITEMS
-  AddWeaponsWebhook = "", --ADDWEAPONS
-  DelWagonsWebhook  = "", --DELWAGONS
-  TpmWebhook        = "", --TPM
-  DelHorseWebhook   = "", --DELHORSE
-  HealPlayerWebhook = "", --HEALPLAYER
-  ReviveWebhook     = "", --REVIVE
-  WhitelistWebhook  = "", --WHITELIST
-  BanWarnWebhook    = "", --BANS/WARNS
-  NewPlayerWebhook  = "", --NEWPLAYER
-  CharPermWebhook   = "", --CHARPERMS
+  -- delete what you dont want or add nil
+  Logs = {
+    SetgroupWebhook   = "", --SETJOB
+    SetjobWebhook     = "", --SETGROUP
+    AddmoneyWebhook   = "", --ADDMONEY
+    DelMoneyWebhook   = "", --DELMONEY
+    AddItemsWebhook   = "", --ADDITEMS
+    AddWeaponsWebhook = "", --ADDWEAPONS
+    DelWagonsWebhook  = "", --DELWAGONS
+    TpmWebhook        = "", --TPM
+    DelHorseWebhook   = "", --DELHORSE
+    HealPlayerWebhook = "", --HEALPLAYER
+    ReviveWebhook     = "", --REVIVE
+    WhitelistWebhook  = "", --WHITELIST
+    BanWarnWebhook    = "", --BANS/WARNS
+    NewPlayerWebhook  = "", --NEWPLAYER
+    CharPermWebhook   = "", --CHARPERMS
+  },
 
   ------------------------------------------------------------------------------
   ---------------------------- VOICE -------------------------------------------
