@@ -143,9 +143,9 @@ HealthData = {}
 
 RegisterNetEvent("vorp:GetHealthFromCore")
 AddEventHandler("vorp:GetHealthFromCore", function(healthData)
-    print("vlaues returned", healthData)
+
     HealthData = healthData
-    print("4", HealthData.hInner, HealthData.hOuter, HealthData.sInner, HealthData.sOuter)
+
 end)
 
 AddEventHandler('playerSpawned', function(spawnInfo)
@@ -250,4 +250,12 @@ CreateThread(function()
             TriggerServerEvent("vorp:SaveStamina", outerCoreStamina, innerStamina)
         end
     end
+end)
+
+-- To do in server side if is any problems
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(1800000)
+        TriggerServerEvent("vorp:SaveHours")
+	end
 end)
