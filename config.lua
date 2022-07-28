@@ -97,7 +97,7 @@ Config = {
   RespawnSubTitleFont = 1, -- for the draw text message sub title font
   CombatLogDeath = true, -- people who combat log now spawn in dead rather than force spawned
   ShowUiDeath = true, -- show or hide the UI if player is dead
-  camDeath = false, -- enable or disable the camera death function
+  camDeath = true, -- enable or disable the camera death function
   sprite = true, --- enable text with sprite or disable
   spriteGrey = false, -- if set to false will enable RED sprite true will be grey
 
