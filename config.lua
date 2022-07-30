@@ -210,6 +210,10 @@ Config = {
     AddChar            = "Added Multicharacter ",
     RemoveChar         = "Removed Multicharacter ",
     WrongHex           = "Hex not in DB or Wrong Hex",
+    myjob              = "your job is: ~o~",
+    mygrade            = " ~q~grade: ~o~",
+    charhours          = "your character hours is: ~o~",
+    playhours          = "hours played is: ~o~"
   },
 
 

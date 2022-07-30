@@ -82,14 +82,20 @@ function UpdateChecker(resource)
                 Citizen.Wait(10)
             until NewestVersion ~= nil
             local _, strings = string.gsub(NewestVersion, "\n", "\n")
-            Version1 = NewestVersion:match("[^\n]*"):gsub("[<>]", "")
+            Version1 = NewestVersion:match("<.+>"):gsub("[<>]", "")
+
             if string.find(Version1, Version) then
             else
                 if strings > 0 then
-                    Changelog = NewestVersion:gsub(Version1, ""):match("%<.*" .. Version .. ">"):gsub(Version, "")
-                    Changelog = string.gsub(Changelog, "\n", "")
-                    Changelog = string.gsub(Changelog, "-", " \n-"):gsub("%b<>", ""):sub(1, -2)
-                    NewestVersion = Version1
+                    if Version1 < Version then
+                        Changelog = "Your script version is newer than what was found in github"
+                        NewestVersion = Version
+                    else
+                        Changelog = NewestVersion:gsub(Version1, ""):match("%<.*" .. Version .. ">"):gsub(Version, "")
+                        Changelog = string.gsub(Changelog, "\n", "")
+                        Changelog = string.gsub(Changelog, "-", " \n-"):gsub("%b<>", ""):sub(1, -2)
+                        NewestVersion = Version1
+                    end
                 end
             end
             if Changelog ~= nil then
@@ -108,9 +114,12 @@ function Checker()
     print("^3VORPcore Version check ")
     print("^2Resources found")
     print('')
+
     for i, v in pairs(ScriptList) do
         if string.find(v.NewestVersion, v.Version) then
             print('^4' .. v.Name .. ' (' .. v.Resource .. ') ^2✅ ' .. 'Up to date - Version ' .. v.Version .. '^0')
+        elseif v.Version > v.NewestVersion then
+            print('^4' .. v.Name .. ' (' .. v.Resource .. ') ⚠️ ' .. 'Mismatch (v' .. v.Version .. ') ^5- Official Version: ' .. v.NewestVersion .. ' ^0(' .. v.Github .. ')')
         else
             print('^4' .. v.Name .. ' (' .. v.Resource .. ') ^1❌ ' .. 'Outdated (v' .. v.Version .. ') ^5- Update found: Version ' .. v.NewestVersion .. ' ^0(' .. v.Github .. ')')
         end
