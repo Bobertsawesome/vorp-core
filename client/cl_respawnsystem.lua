@@ -91,11 +91,9 @@ Citizen.CreateThread(function()
             end
             NetworkSetInSpectatorMode(false, PlayerPedId())
 
-            DisplayHud(false)
+
             DisplayRadar(false)
-
             TimeToRespawn = Config["RespawnTime"]
-
             StartDeathCam()
 
             while TimeToRespawn >= 0 and setDead do
