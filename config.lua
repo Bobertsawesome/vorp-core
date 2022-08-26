@@ -158,15 +158,15 @@ Config = {
 
   --------------------------------------------------------------------------------------
   -----------------------------BUILT IN RICH PRESENCE DISCORD --------------------------
-  maxplayers = 128, -- change to the number of players that can get in to your server
-  appid = nil, -- Application ID (Replace this with you own)
-  biglogo = "synred", -- image assets name for the "large" icon.
-  biglogodesc = " Redm Server Connect: ", -- text when hover over image
-  smalllogo = "smallboy", -- image assets name for the "small" icon.(OPTIONAL)
-  smalllogodesc = "Join us for a good time", -- text when hover over image
-  discordlink = "https://discord.gg/", -- discord link
-  richpresencebutton = "Join Discord", --set button text for Rich Presence Button
-  shownameandid = true, --show player steam name and id
+  -- maxplayers = 128, -- change to the number of players that can get in to your server
+  -- appid = nil, -- Application ID (Replace this with you own)
+  -- biglogo = "synred", -- image assets name for the "large" icon.
+  -- biglogodesc = " Redm Server Connect: ", -- text when hover over image
+  -- smalllogo = "smallboy", -- image assets name for the "small" icon.(OPTIONAL)
+  -- smalllogodesc = "Join us for a good time", -- text when hover over image
+  -- discordlink = "https://discord.gg/", -- discord link
+  -- richpresencebutton = "Join Discord", --set button text for Rich Presence Button
+  -- shownameandid = true, --show player steam name and id
 
 
   ---------------------------------------------------------------------------------------
