@@ -82,6 +82,7 @@ function Character(source, identifier, charIdentifier, group, job, jobgrade, fir
 
     self.getCharacter = function()
         local userData = {}
+        local invokingResource = GetInvokingResource() or GetCurrentResourceName() or "N/A"
 
         userData.identifier = self.identifier
         userData.charIdentifier = self.charIdentifier
@@ -112,28 +113,34 @@ function Character(source, identifier, charIdentifier, group, job, jobgrade, fir
 
         userData.setJobGrade = function(jobgrade)
             self.Jobgrade(jobgrade)
+            exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - setJobGrade: " .. jobgrade), resource = "VORP:Internal", extraParams = "setJobGrade"}
         end
 
         userData.setGroup = function(group)
             self.Group(group)
+            exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - setGroup: " .. group), resource = "VORP:Internal", extraParams = "setGroup"}
         end
 
         userData.setJob = function(job)
             self.Job(job)
+            exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - setJob: " .. job), resource = "VORP:Internal", extraParams = "setJob"}
         end
 
         self.setJobGrade = function(jobgrade)
             self.Jobgrade(jobgrade)
+            exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - setJobGrade: " .. jobgrade), resource = "VORP:Internal", extraParams = "setJobGrade"}
         end
 
         userData.setMoney = function(money)
             self.Money(money)
             self.updateCharUi()
+            exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - setMoney: " .. money), resource = "VORP:Internal", extraParams = "setMoney"}
         end
 
         userData.setGold = function(gold)
             self.Gold(gold)
             self.updateCharUi()
+            exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - setGold: " .. gold), resource = "VORP:Internal", extraParams = "setGold"}
         end
 
         userData.setRol = function(rol)
@@ -164,10 +171,12 @@ function Character(source, identifier, charIdentifier, group, job, jobgrade, fir
 
         userData.addCurrency = function(currency, quantity)
             self.addCurrency(currency, quantity)
+            exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - addCurrency [" .. currency .. "] : " .. quantity), resource = "VORP:Internal", extraParams = "addCurrency"}
         end
 
         userData.removeCurrency = function(currency, quantity)
             self.removeCurrency(currency, quantity)
+            exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - removeCurrency [" .. currency .. "] : " .. quantity), resource = "VORP:Internal", extraParams = "removeCurrency"}
         end
 
         userData.addXp = function(xp)
