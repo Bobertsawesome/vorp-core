@@ -1,5 +1,9 @@
 local characters = {}
 
+TriggerEvent("getCore",function(core)
+    VorpCore = core
+end)
+
 function LoadCharacter(identifier, character)
     characters[identifier] = character
 end
@@ -59,4 +63,11 @@ RegisterNetEvent('vorp:ImDead', function(isDead)
     if _users[identifier] then
         _users[identifier].GetUsedCharacter().setDead(isDead)
     end
+end)
+
+RegisterServerEvent('vorp:SaveDate')
+AddEventHandler('vorp:SaveDate', function()
+    local Character = VorpCore.getUser(source).getUsedCharacter
+    local charid = Character.charIdentifier
+	exports.ghmattimysql:execute("UPDATE characters SET LastLogin =NOW() WHERE charidentifier =@charidentifier", {charidentifier = charid })
 end)
