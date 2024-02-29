@@ -25,6 +25,7 @@ server_scripts {
     'config/commands.lua',
     'server/*lua',
     'server/services/dbupdater/*.lua',
+    '@urpUtil/exports/webhookExport.lua',
 }
 
 files {
