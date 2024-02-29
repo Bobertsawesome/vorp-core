@@ -1,4 +1,4 @@
-CreateThread(function()
+--[[ CreateThread(function()
     while true do
         SetDiscordAppId(Config.appid)
         SetDiscordRichPresenceAsset(Config.biglogo)
@@ -21,4 +21,4 @@ CreateThread(function()
         end
         Wait(60000) -- 1 min update
     end
-end)
+end) ]]
