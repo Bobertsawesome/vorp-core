@@ -124,11 +124,13 @@ function Character(source, identifier, charIdentifier, group, job, jobgrade, fir
         userData.setJob = function(job)
             self.Job(job)
             exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - setJob: " .. job), resource = "VORP:Internal", extraParams = "setJob"}
+            TriggerEvent("urpUtil:JobChangeCB", self.source, job, self.Jobgrade)
         end
 
         self.setJobGrade = function(jobgrade)
             self.Jobgrade(jobgrade)
             exports.logmanager:log{player = self.source, message = ("[" .. invokingResource .. "] - setJobGrade: " .. jobgrade), resource = "VORP:Internal", extraParams = "setJobGrade"}
+            TriggerEvent("urpUtil:JobChangeCB", self.source, self.Job, jobgrade)
         end
 
         userData.setMoney = function(money)
