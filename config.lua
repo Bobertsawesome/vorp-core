@@ -31,7 +31,7 @@ Config = {
     maxHealth              = 10,           -- Maximum health for players. 10 is full, 0 is empty.
     maxStamina             = 10,           -- Maximum stamina for players. 10 is full, 0 is empty.
     PVP                    = true,         -- Enables player vs player combat.
-    PVPToggle              = false,        -- Allows players to toggle their PVP status.
+    PVPToggle              = true,        -- Allows players to toggle their PVP status.
     CommandOnOffPVP        = 'pvp',        -- Command to toggle PVP status, requires PVPToggle to be true.
     savePlayersTimer       = 10,           -- Interval in minutes for automatically saving all players to the database.
     showplayerIDwhenfocus  = true,         -- Shows player Steam name when focusing on them with RMB if set to false.
@@ -60,15 +60,15 @@ Config = {
 
     webhookColor           = 16711680,                            -- Color for embeds in Discord webhooks.
     name                   = "VORP",                              -- Name displayed in webhook embeds.
-    logo                   = "https://via.placeholder.com/30x30", -- Logo URL for webhook embeds.
-    footerLogo             = "https://via.placeholder.com/30x30", -- Footer logo URL for webhook embeds.
-    Avatar                 = "https://via.placeholder.com/30x30", -- Avatar URL for webhook embeds.
+    logo                   = "https://i.ibb.co/FWmNj7L/logo-icon-trans.png", -- Logo URL for webhook embeds.
+    footerLogo             = "https://i.ibb.co/FWmNj7L/logo-icon-trans.png", -- Footer logo URL for webhook embeds.
+    Avatar                 = "https://i.ibb.co/FWmNj7L/logo-icon-trans.png", -- Avatar URL for webhook embeds.
 
     --=============================================
     --            UI CONFIGURATIONS              --
     --=============================================
 
-    HideUi                 = false,      -- Shows or hides the overall UI.
+    HideUi                 = true,      -- Shows or hides the overall UI.
     HideGold               = false,      -- Disables the Gold UI for all players.
     HideMoney              = false,      -- Disables the Money UI for all players.
     HideLevel              = false,      -- Disables the Level UI for all players.
@@ -89,9 +89,9 @@ Config = {
     --            MAP CONFIGURATIONS             --
     --=============================================
 
-    mapTypeOnFoot          = 3,     -- Radar type when on foot. 0 = Off, 1 = Regular, 2 = Expanded, 3 = Simple (compass).
-    mapTypeOnMount         = 3,     -- Radar type when on horse. Same options as on foot.
-    enableTypeRadar        = false, -- Enables custom radar types if true, otherwise players use game settings.
+    mapTypeOnFoot          = 1,     -- Radar type when on foot. 0 = Off, 1 = Regular, 2 = Expanded, 3 = Simple (compass).
+    mapTypeOnMount         = 1,     -- Radar type when on horse. Same options as on foot.
+    enableTypeRadar        = true, -- Enables custom radar types if true, otherwise players use game settings.
     Loadinscreen           = true,  -- Enables loading screens during spawn and respawn.
     LoadinScreenTimer      = 10000, -- Duration of loading screens in milliseconds.
 
@@ -155,7 +155,7 @@ Config = {
     --    DISCORD RICH PRESENCE INTEGRATION      --
     --=============================================
 
-    maxplayers             = 42,                         -- Maximum number of players allowed on the server.
+    maxplayers             = 64,                         -- Maximum number of players allowed on the server.
     appid                  = nil,                        -- Discord Application ID. Replace this with your own application's ID.
     biglogo                = "LOGOname",                 -- Name of the image asset to use for the large icon in the rich presence.
     biglogodesc            = " Redm Server Connect: ",   -- Description displayed when hovering over the large icon.
