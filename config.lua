@@ -42,7 +42,7 @@ Config = {
     --          MULTICHARACTER SUPPORT           --
     --=============================================
 
-    SaveDiscordId          = true, -- Saves Discord ID in the character/user database upon joining/leaving.
+    SaveDiscordId          = false, -- Saves Discord ID in the character/user database upon joining/leaving.
     MaxCharacters          = 5,    -- Maximum number of characters a player can create. when first join, for old users go to users table and change the number of characters there
 
     --=============================================
